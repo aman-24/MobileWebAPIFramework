@@ -13,7 +13,7 @@ public class ConfigProperties {
     public static String activityName;
     public static String packageName;
     public static String androidApp;
-    public static boolean noReset;
+    public static String noReset;
 
     public static String serverIP;
     public static String serverPort;
@@ -48,7 +48,7 @@ public class ConfigProperties {
         activityName = prop.get("appActivity").toString();
         packageName = prop.get("appPackage").toString();
         androidApp = prop.get("app").toString();
-        noReset = Boolean.getBoolean(prop.get("noReset").toString());
+        noReset = prop.get("noReset").toString();
         serverIP = prop.get("server_ip").toString();
         serverPort = prop.get("server_port").toString();
         browser = prop.get("browser").toString();

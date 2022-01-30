@@ -31,7 +31,7 @@ public class CommonUtils {
                 capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, ConfigProperties.platform);
                 capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, ConfigProperties.deviceName);
                 capabilities.setCapability(MobileCapabilityType.NO_RESET, ConfigProperties.noReset);
-                capabilities.setCapability(MobileCapabilityType.APP, ConfigProperties.androidApp);
+//                capabilities.setCapability(MobileCapabilityType.APP, ConfigProperties.androidApp);
                 capabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, ConfigProperties.activityName);
                 capabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, ConfigProperties.packageName);
                 capabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, ConfigProperties.platformVersion);

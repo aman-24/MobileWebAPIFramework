@@ -1,4 +1,4 @@
-package com.stepDefinations;
+package com.stepDefinitions;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -12,11 +12,18 @@ import java.io.IOException;
 
 public class Hooks {
 
+
     @Before
-    public static void setup(){
+    public static void setup() throws Exception {
         ConfigProperties readProperty = new ConfigProperties();
         readProperty.initialize();
+        CommonUtils utils = new CommonUtils();
+        if (ConfigProperties.platform.equalsIgnoreCase("Android"))
+            utils.launchMobileDriver();
+        else if (ConfigProperties.platform.equalsIgnoreCase("Web"))
+            System.out.println("Running web app");
     }
+
 
     @After
     public static void tearDown(Scenario scenario) throws IOException {
