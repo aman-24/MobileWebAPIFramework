@@ -5,18 +5,22 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.log4j.Logger;
-import screens.ChromeScreen;
-import screens.HomeScreen;
+import mobileScreens.ChromeScreen;
+import mobileScreens.HomeScreen;
 import utils.CommonUtils;
 
 public class SelendroidSteps extends CommonUtils {
     public static final Logger log = Logger.getLogger(SelendroidSteps.class);
-    HomeScreen hs = new HomeScreen(appDriver);
-    ChromeScreen cs = new ChromeScreen(appDriver);
+    HomeScreen hs;
+    ChromeScreen cs;
 
     @Given("^User Opens the App$")
     public void userOpensTheApp() throws Exception {
         log.info("Selendroid app is opened");
+        launchMobileDriver();
+        hs = new HomeScreen(appDriver);
+        cs = new ChromeScreen(appDriver);
+
     }
 
     @Then("^Verify home screen title.$")

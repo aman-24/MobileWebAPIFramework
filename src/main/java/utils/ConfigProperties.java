@@ -19,8 +19,12 @@ public class ConfigProperties {
     public static String serverPort;
 
     public static String browser;
+    public static String chromeDriverLocation;
+    public static String baseWebURL;
 
     public static String defaultWait;
+
+    public static String baseAPIURL;
 
     // --------------Creating ConfigProperties File-----------------
     public static File file = new File("./src/test/resources/config.properties");
@@ -52,7 +56,10 @@ public class ConfigProperties {
         serverIP = prop.get("server_ip").toString();
         serverPort = prop.get("server_port").toString();
         browser = prop.get("browser").toString();
+        chromeDriverLocation = prop.get("chromeDriverLocation").toString();
+        baseWebURL = prop.get("baseWebURL").toString();
         defaultWait = prop.get("IMPLICIT_WAIT").toString();
+        baseAPIURL = prop.get("baseAPIURL").toString();
     }
 
 }

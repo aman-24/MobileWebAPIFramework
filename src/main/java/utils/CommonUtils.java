@@ -9,9 +9,12 @@ import io.appium.java_client.remote.AndroidMobileCapabilityType;
 import io.appium.java_client.remote.AutomationName;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 public class CommonUtils {
@@ -44,6 +47,20 @@ public class CommonUtils {
                 throw new Exception("Platform not available");
         }
         appDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    }
+
+    public void launchWebDriver() throws Exception {
+        switch (ConfigProperties.browser.toLowerCase()) {
+            case "chrome":
+                System.setProperty("webdriver.chrome.driver", ConfigProperties.chromeDriverLocation);
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("start-maximized");
+                webDriver = new ChromeDriver(options);
+                break;
+
+            default:
+                throw new Exception("Browser not found");
+        }
     }
 
 }

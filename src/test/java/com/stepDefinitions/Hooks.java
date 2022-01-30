@@ -1,5 +1,6 @@
 package com.stepDefinitions;
 
+import base.AppiumServer;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -14,25 +15,34 @@ public class Hooks {
 
 
     @Before
-    public static void setup() throws Exception {
+    public static void setup() {
         ConfigProperties readProperty = new ConfigProperties();
         readProperty.initialize();
-        CommonUtils utils = new CommonUtils();
-        if (ConfigProperties.platform.equalsIgnoreCase("Android"))
-            utils.launchMobileDriver();
-        else if (ConfigProperties.platform.equalsIgnoreCase("Web"))
-            System.out.println("Running web app");
     }
 
 
     @After
     public static void tearDown(Scenario scenario) throws IOException {
-        if (scenario.isFailed()) {
+        if (CommonUtils.appDriver != null && scenario.isFailed()) {
 
             String screenshotName = scenario.getName().replaceAll(" ", "_");
 
             byte[] screenshot = ((TakesScreenshot) CommonUtils.appDriver).getScreenshotAs(OutputType.BYTES);
             scenario.attach(screenshot, "image/png", screenshotName);
         }
+        else if (CommonUtils.webDriver != null && scenario.isFailed()) {
+
+            String screenshotName = scenario.getName().replaceAll(" ", "_");
+
+            byte[] screenshot = ((TakesScreenshot) CommonUtils.webDriver).getScreenshotAs(OutputType.BYTES);
+            scenario.attach(screenshot, "image/png", screenshotName);
+        }
+
+        if (CommonUtils.appDriver != null)
+            CommonUtils.appDriver.quit();
+
+        if (CommonUtils.webDriver != null)
+            CommonUtils.webDriver.quit();
+        AppiumServer.stop();
     }
 }
