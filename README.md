@@ -25,6 +25,9 @@ Extent report has been used as primary report.
 report would be generated as base folder by the name of "Extent_Test_Report.html"
 Screenshot for failed test cases will be automatically link to failed test in Extent report.
 
+<img width="1792" alt="Screenshot 2022-01-31 at 1 56 02 AM" src="https://user-images.githubusercontent.com/57958141/151719932-32719437-ecfa-4552-93f6-5080dbaa434e.png">
+<img width="1792" alt="Screenshot 2022-01-31 at 1 56 12 AM" src="https://user-images.githubusercontent.com/57958141/151719935-b79b0c47-7e12-43d0-b948-884fa7e9c2b4.png">
+
 #Build Steps
 1. Clone this repo in your system.
 2. Open project in IDE (intelli-j/Eclipse).
